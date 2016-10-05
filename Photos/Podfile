@@ -9,7 +9,9 @@ target 'Photos' do
 	 pod 'Alamofire', '~> 3.0'
          pod 'ObjectMapper', '~> 1.5'
          pod 'SwiftyJSON'
-  target 'PhotosTests' do
+	 pod 'RxSwift'
+	 pod 'RxCocoa'
+target 'PhotosTests' do
     inherit! :search_paths
     # Pods for testing
   end
