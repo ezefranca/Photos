@@ -22,6 +22,10 @@ class ViewController: UIViewController {
         //let p:PhotoApi = Photo()
         print("viewDidLoad")
         let photoAPI = PhotoApi()
+        
+        
+        photoAPI.download()
+        
         photoAPI.download()
             // tenta 3 vezes
             .retry(3)
