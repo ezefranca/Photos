@@ -1,15 +1,26 @@
 //
 //  PhotosTests.swift
-//  PhotosTests
+//  Photos
 //
-//  Created by techthings on 10/5/16.
+//  Created by Ezequiel on 06/10/16.
 //  Copyright © 2016 Ezequiel França. All rights reserved.
 //
 
+//        albumId": 1,
+//        "id": 1,
+//        "title": "accusamus beatae ad facilis cum similique qui sunt",
+//        "url": "http://placehold.it/600/92c952",
+//        "thumbnailUrl": "http://placehold.it/150/30ac17"
+
+import Foundation
 import XCTest
+import ObjectMapper
+import SwiftyJSON
 @testable import Photos
 
-class PhotosTests: XCTestCase {
+class PhotoTests: XCTestCase {
+    
+    let photoMapper = Mapper<Photos>()
     
     override func setUp() {
         super.setUp()
@@ -21,16 +32,130 @@ class PhotosTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testBasicParsing() {
+        
+        let title = "accusamus beatae ad facilis cum similique qui sunt"
+        let url = "http://placehold.it/600/92c952"
+        let internalIdentifier = 1
+        let thumbnailUrl = "http://placehold.it/150/30ac17"
+        let albumId = 1
+        
+        let photoJSONString = "{\"albumId\":\(albumId),\"url\":\"\(url)\",\"id\":\(internalIdentifier),\"thumbnailUrl\":\"\(thumbnailUrl)\", \"title\":\"\(title)\"}"
+        
+        print(photoJSONString)
+        
+        let photo = photoMapper.map(photoJSONString)
+        
+        XCTAssertNotNil(photo)
+        XCTAssertEqual(title, photo!.title)
+        XCTAssertEqual(url, photo!.url)
+        XCTAssertEqual(internalIdentifier, photo!.internalIdentifier)
+        XCTAssertEqual(thumbnailUrl, photo!.thumbnailUrl)
+        XCTAssertEqual(albumId, photo!.albumId)
+        
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
-        }
+    func testInstanceParsing() {
+        
+        let title = "accusamus beatae ad facilis cum similique qui sunt"
+        let url = "http://placehold.it/600/92c952"
+        let internalIdentifier = 1
+        let thumbnailUrl = "http://placehold.it/150/30ac17"
+        let albumId = 1
+        
+        let photoJSONString = "{\"albumId\":\(albumId),\"url\":\"\(url)\",\"id\":\(internalIdentifier),\"thumbnailUrl\":\"\(thumbnailUrl)\", \"title\":\"\(title)\"}"
+        
+        let photo = Mapper<Photos>().mapArray(photoJSONString)
+        
+        XCTAssertNotNil(photo)
+        XCTAssertEqual(title, photo!.first!.title)
+        XCTAssertEqual(url, photo!.first!.url)
+        XCTAssertEqual(internalIdentifier, photo!.first!.internalIdentifier)
+        XCTAssertEqual(thumbnailUrl, photo!.first!.thumbnailUrl)
+        XCTAssertEqual(albumId, photo!.first!.albumId)
+    }
+    
+    func testDictionaryParsing() {
+        let title = "accusamus beatae ad facilis cum similique qui sunt"
+        let url = "http://placehold.it/600/92c952"
+        let internalIdentifier = 1
+        let thumbnailUrl = "http://placehold.it/150/30ac17"
+        let albumId = 1
+        
+        let json: [String: AnyObject] = ["albumId": albumId, "url": url, "id": internalIdentifier, "thumbnailUrl": thumbnailUrl, "title" : title]
+        
+        let p = Photos()
+        p.title = title
+        let photo = Mapper().map(json, toObject: p)
+        
+        XCTAssertNotNil(photo)
+        XCTAssertEqual(title, photo.title)
+        XCTAssertEqual(url, photo.url)
+        XCTAssertEqual(internalIdentifier, photo.internalIdentifier)
+        XCTAssertEqual(thumbnailUrl, photo.thumbnailUrl)
+        XCTAssertEqual(albumId, photo.albumId)
+    }
+    
+    func testInstanceWithJSON() {
+        let title = "accusamus beatae ad facilis cum similique qui sunt"
+        let url = "http://placehold.it/600/92c952"
+        let internalIdentifier = 1
+        let thumbnailUrl = "http://placehold.it/150/30ac17"
+        let albumId = 1
+        
+        let j: JSON = ["albumId": albumId, "url": url, "id": internalIdentifier, "thumbnailUrl": thumbnailUrl, "title" : title]
+        
+        let photo = Photos(json: j)
+        
+        XCTAssertNotNil(photo)
+        XCTAssertEqual(title, photo.title)
+        XCTAssertEqual(url, photo.url)
+        XCTAssertEqual(internalIdentifier, photo.internalIdentifier)
+        XCTAssertEqual(thumbnailUrl, photo.thumbnailUrl)
+        XCTAssertEqual(albumId, photo.albumId)
+    }
+    
+    
+    func testInstanceWithAnyObject() {
+        let title = "accusamus beatae ad facilis cum similique qui sunt"
+        let url = "http://placehold.it/600/92c952"
+        let internalIdentifier = 1
+        let thumbnailUrl = "http://placehold.it/150/30ac17"
+        let albumId = 1
+        
+        let j: AnyObject = ["albumId": albumId, "url": url, "id": internalIdentifier, "thumbnailUrl": thumbnailUrl, "title" : title]
+        
+        let photo = Photos(object: j)
+        
+        XCTAssertNotNil(photo)
+        XCTAssertEqual(title, photo.title)
+        XCTAssertEqual(url, photo.url)
+        XCTAssertEqual(internalIdentifier, photo.internalIdentifier)
+        XCTAssertEqual(thumbnailUrl, photo.thumbnailUrl)
+        XCTAssertEqual(albumId, photo.albumId)
+    }
+    
+    func testDictionaryRepresetation() {
+        
+        let title = "accusamus beatae ad facilis cum similique qui sunt"
+        let url = "http://placehold.it/600/92c952"
+        let internalIdentifier = 1
+        let thumbnailUrl = "http://placehold.it/150/30ac17"
+        let albumId = 1
+        
+        let json: [String: AnyObject] = ["albumId": albumId, "url": url, "id": internalIdentifier, "thumbnailUrl": thumbnailUrl, "title" : title]
+        
+        let photo = Photos(JSON: json)
+        let dictionary = photo!.dictionaryRepresentation()
+        let photo2 = Photos(JSON: dictionary)
+        
+        XCTAssertNotNil(dictionary)
+        XCTAssertEqual(json as NSObject, dictionary as NSObject)
+        XCTAssertEqual(photo?.title, photo2?.title)
+        XCTAssertEqual(photo?.url, photo2?.url)
+        XCTAssertEqual(photo?.internalIdentifier, photo2?.internalIdentifier)
+        XCTAssertEqual(photo?.thumbnailUrl, photo2?.thumbnailUrl)
+        XCTAssertEqual(photo?.albumId, photo2?.albumId)
     }
     
 }

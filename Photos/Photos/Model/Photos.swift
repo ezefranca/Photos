@@ -33,6 +33,10 @@ public class Photos: Mappable {
      - parameter object: The object of either Dictionary or Array kind that was passed.
      - returns: An initalized instance of the class.
      */
+    init(){
+        
+    }
+    
     convenience public init(object: AnyObject) {
         self.init(json: JSON(object))
     }
