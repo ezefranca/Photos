@@ -6,12 +6,10 @@ target 'Photos' do
          pod 'SwiftyJSON'
 	 pod 'RxSwift'
 	 pod 'RxCocoa'
-	 pod "RxViewModel"
 target 'PhotosTests' do
     inherit! :search_paths
     	pod 'RxSwift'
-	pod 'RxTests'
-	pod "RxViewModel"  
+	pod 'RxTests'  
   end
 
   target 'PhotosUITests' do

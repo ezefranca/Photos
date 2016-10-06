@@ -41,7 +41,8 @@ class ViewController: UIViewController {
                     do {
                         let json : AnyObject! = try NSJSONSerialization.JSONObjectWithData(data as! NSData, options: NSJSONReadingOptions.MutableContainers)
                         let customer : Array<Photos> = Mapper<Photos>().mapArray(json)!
-                        print(customer.first!.url!)
+                        let photo = PhotosViewModel(photo: customer.first!)
+                        print(photo.title)
                     } catch {
                         print(NSString(data: data as! NSData, encoding: NSUTF8StringEncoding))
                     }
@@ -59,5 +60,5 @@ class ViewController: UIViewController {
             )
             .addDisposableTo(disposeBag)
     }
-
+    
 }

@@ -6,15 +6,9 @@
 //  Copyright © 2016 Ezequiel França. All rights reserved.
 //
 
-import UIKit
-import RxViewModel
-import RxSwift
-import RxCocoa
+import Foundation
 
-public class PhotosViewModel: RxViewModel {
-    
-    public var photo:Photos?
-    private let disposeBag = DisposeBag()
+public struct PhotosViewModel {
     
     public var title: String?
     public var url: String?
@@ -22,26 +16,23 @@ public class PhotosViewModel: RxViewModel {
     public var thumbnailUrl: String?
     public var albumId: Int?
     
-    public override init ()
-    {
-        super.init()
-        
-        
-        self.didBecomeActive.subscribeNext { [weak self] _ in
-            
-            if let strongSelf = self {
-                print(strongSelf)
-            }
-            
-            }.addDisposableTo(self.disposeBag)
-        
+    var model: Photos! {
+        didSet{
+            self.title = model.title
+            self.url = model.url
+            self.internalIdentifier = model.internalIdentifier
+            self.thumbnailUrl = model.thumbnailUrl
+            self.albumId = model.albumId
+        }
     }
     
-    init(photo: Photos){
-        
-        self.photo = photo
-        super.init()
-        
+    init(photo: Photos) {
+        setPhoto(photo)
+    }
+    
+    mutating func setPhoto(photo:Photos) {
+        self.model = photo
     }
     
 }
+

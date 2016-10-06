@@ -13,8 +13,6 @@ enum service {
     static let baseURL = NSURL(string: "https://jsonplaceholder.typicode.com/photos")
 }
 
-
-
 public class PhotoApi {
     
     
