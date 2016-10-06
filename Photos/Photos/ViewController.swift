@@ -13,7 +13,7 @@ import Alamofire
 import Foundation
 import ObjectMapper
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, ErrorAlerts {
     
     var disposeBag = DisposeBag()
     
@@ -21,35 +21,15 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         //let p:PhotoApi = Photo()
         print("viewDidLoad")
-        let photoAPI = PhotoApi()
+        let manager = PhotoManager(downloader: PhotoApi())
         
-        
-        photoAPI.download()
-        
-        photoAPI.download()
-            // tenta 3 vezes
-            .retry(3)
-            // 5 segundos maximo de timeout
-            .timeout(5, scheduler: MainScheduler.instance)
-            // adicionar backgroud thread
-            .subscribeOn(photoAPI.backgroundScheduler)
-            // Adicionar main thread
-            .observeOn(photoAPI.mainScheduler)
+        manager.getViewModels()
             .subscribe(
                 onNext: { data in
-                    
-                    do {
-                        let json : AnyObject! = try NSJSONSerialization.JSONObjectWithData(data as! NSData, options: NSJSONReadingOptions.MutableContainers)
-                        let customer : Array<Photos> = Mapper<Photos>().mapArray(json)!
-                        let photo = PhotosViewModel(photo: customer.first!)
-                        print(photo.title)
-                    } catch {
-                        print(NSString(data: data as! NSData, encoding: NSUTF8StringEncoding))
-                    }
-                    
+                    print("Next 💪")
                 },
                 onError: { error in
-                    print(error)
+                    self.showError(ErrorOptions(message: (error as NSError).domain))
                 },
                 onCompleted: {
                     print("Completo 💪")
@@ -59,6 +39,47 @@ class ViewController: UIViewController {
                 }
             )
             .addDisposableTo(disposeBag)
+        
+        
+        
+        //        let photoAPI = PhotoApi()
+        //        
+        //        
+        //        photoAPI.download()
+        //        
+        //        photoAPI.download()
+        //            // tenta 3 vezes
+        //            .retry(3)
+        //            // 5 segundos maximo de timeout
+        //            .timeout(5, scheduler: MainScheduler.instance)
+        //            // adicionar backgroud thread
+        //            .subscribeOn(photoAPI.backgroundScheduler)
+        //            // Adicionar main thread
+        //            .observeOn(photoAPI.mainScheduler)
+        //            .subscribe(
+        //                onNext: { data in
+        //                    
+        //                    do {
+        //                        let json : AnyObject! = try NSJSONSerialization.JSONObjectWithData(data as! NSData, options: NSJSONReadingOptions.MutableContainers)
+        //                        let customer : Array<Photos> = Mapper<Photos>().mapArray(json)!
+        //                        let photo = PhotosViewModel(photo: customer.first!)
+        //                        print(photo.title)
+        //                    } catch {
+        //                        print(NSString(data: data as! NSData, encoding: NSUTF8StringEncoding))
+        //                    }
+        //                    
+        //                },
+        //                onError: { error in
+        //                    print(error)
+        //                },
+        //                onCompleted: {
+        //                    print("Completo 💪")
+        //                },
+        //                onDisposed: {
+        //                    print("Disposed 😎")
+        //                }
+        //            )
+        //            .addDisposableTo(disposeBag)
     }
     
 }

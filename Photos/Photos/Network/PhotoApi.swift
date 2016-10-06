@@ -28,11 +28,13 @@ public class PhotoApi {
         return MainScheduler.instance
     }
     
+    var request:Request? = nil
+    
     
     func download() -> Observable<AnyObject?> {
         
         return Observable.create({ (observer) -> Disposable in
-            let request = Alamofire.request(.GET, service.baseURL!, parameters: nil)
+            self.request = Alamofire.request(.GET, service.baseURL!, parameters: nil)
                 .response(completionHandler:  { request, response, data, error in
                     if ((error) != nil) {
                         observer.on(.Error(error!))
@@ -42,9 +44,13 @@ public class PhotoApi {
                     }
                 });
             return AnonymousDisposable {
-                request.cancel()
+                self.request!.cancel()
             }
         })
         
+    }
+    
+    func cancel() {
+        self.request!.cancel() 
     }
 }

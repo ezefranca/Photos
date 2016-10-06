@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (3.5.1)
+  - LNRSimpleNotifications (0.4.2)
   - ObjectMapper (1.5.0)
   - RxCocoa (2.6.0):
     - RxSwift (~> 2.5)
@@ -10,6 +11,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 3.0)
+  - LNRSimpleNotifications (~> 0.4.2)
   - ObjectMapper (~> 1.5)
   - RxCocoa
   - RxSwift
@@ -18,12 +20,13 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: 0dfba1184a543e2aa160f4e39cac4e8aba48d223
+  LNRSimpleNotifications: 39eb975feb035884e4b3c1b116e75a3933f52b2d
   ObjectMapper: 386645adca9d9d23b95eda43090b09d66444cf14
   RxCocoa: 89ab00d5753502520227940e3a0e0a0413683c6b
   RxSwift: 77f3a0b15324baa7a1c9bfa9f199648a82424e26
   RxTests: cdcc379c70e80089a8bc2c99515223339d1c3b81
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: 2e1ab4827611b25f3a8a4a0094de5949cc5f8354
+PODFILE CHECKSUM: 93b0622139d48b9896b98a2f1e20e6fcc4ca6a02
 
 COCOAPODS: 1.1.0.rc.2

@@ -21,6 +21,8 @@
 		7E931A48AAD7A4AFDE65815E /* Pods_Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC9A444AF857C1C6BD6C6F6B /* Pods_Photos.framework */; };
 		8B8D575D1DA6082700904C96 /* PhotosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8D575C1DA6082700904C96 /* PhotosTests.swift */; };
 		8B8D57611DA68B0200904C96 /* PhotosViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8D57601DA68B0200904C96 /* PhotosViewModelTests.swift */; };
+		8BACD18E1DA6EA6F00F4612B /* UIViewControllerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BACD18D1DA6EA6F00F4612B /* UIViewControllerError.swift */; };
+		8BD0DD621DA6D4E7008ABBEC /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD0DD611DA6D4E7008ABBEC /* PhotoManager.swift */; };
 		EFA8FE880290873475B955A4 /* Pods_PhotosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BAC876CC149194CFD5DA88C /* Pods_PhotosUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +67,8 @@
 		8B8D575C1DA6082700904C96 /* PhotosTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosTests.swift; sourceTree = "<group>"; };
 		8B8D57601DA68B0200904C96 /* PhotosViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosViewModelTests.swift; sourceTree = "<group>"; };
 		8BAC876CC149194CFD5DA88C /* Pods_PhotosUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotosUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8BACD18D1DA6EA6F00F4612B /* UIViewControllerError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewControllerError.swift; path = Common/UIViewControllerError.swift; sourceTree = "<group>"; };
+		8BD0DD611DA6D4E7008ABBEC /* PhotoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoManager.swift; path = Manager/PhotoManager.swift; sourceTree = "<group>"; };
 		B6356E9B4F6A5EA965F1981F /* Pods-PhotosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotosUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotosUITests/Pods-PhotosUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BD26211DC751ADACB379965F /* Pods-PhotosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotosUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotosUITests/Pods-PhotosUITests.release.xcconfig"; sourceTree = "<group>"; };
 		CC9A444AF857C1C6BD6C6F6B /* Pods_Photos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Photos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,6 +128,8 @@
 		09FE5BD11DA5696A00E8E5FD /* Photos */ = {
 			isa = PBXGroup;
 			children = (
+				8BACD18C1DA6EA5200F4612B /* Common */,
+				8BD0DD601DA6D4C8008ABBEC /* Manager */,
 				09FE5C031DA56FEC00E8E5FD /* Network */,
 				09FE5C001DA56B3A00E8E5FD /* Model */,
 				09FE5BD21DA5696A00E8E5FD /* AppDelegate.swift */,
@@ -194,6 +200,22 @@
 				8BAC876CC149194CFD5DA88C /* Pods_PhotosUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8BACD18C1DA6EA5200F4612B /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				8BACD18D1DA6EA6F00F4612B /* UIViewControllerError.swift */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		8BD0DD601DA6D4C8008ABBEC /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				8BD0DD611DA6D4E7008ABBEC /* PhotoManager.swift */,
+			);
+			name = Manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -474,7 +496,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BD0DD621DA6D4E7008ABBEC /* PhotoManager.swift in Sources */,
 				09FE5C021DA56B3A00E8E5FD /* Photos.swift in Sources */,
+				8BACD18E1DA6EA6F00F4612B /* UIViewControllerError.swift in Sources */,
 				09FE5C051DA5700D00E8E5FD /* PhotoApi.swift in Sources */,
 				09FE5C071DA5946B00E8E5FD /* PhotosViewModel.swift in Sources */,
 				09FE5BD51DA5696A00E8E5FD /* ViewController.swift in Sources */,
