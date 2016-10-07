@@ -23,6 +23,9 @@
 		8B8D57611DA68B0200904C96 /* PhotosViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8D57601DA68B0200904C96 /* PhotosViewModelTests.swift */; };
 		8BACD18E1DA6EA6F00F4612B /* UIViewControllerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BACD18D1DA6EA6F00F4612B /* UIViewControllerError.swift */; };
 		8BACD1901DA6F4F200F4612B /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BACD18F1DA6F4F200F4612B /* ListViewController.swift */; };
+		8BACD1921DA74E5100F4612B /* UIImageAverageColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BACD1911DA74E5100F4612B /* UIImageAverageColor.swift */; };
+		8BACD1951DA750BC00F4612B /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BACD1941DA750BC00F4612B /* PhotoCell.swift */; };
+		8BACD19A1DA7751800F4612B /* UIImageAverageColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BACD1991DA7751800F4612B /* UIImageAverageColorTests.swift */; };
 		8BD0DD621DA6D4E7008ABBEC /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD0DD611DA6D4E7008ABBEC /* PhotoManager.swift */; };
 		EFA8FE880290873475B955A4 /* Pods_PhotosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BAC876CC149194CFD5DA88C /* Pods_PhotosUITests.framework */; };
 /* End PBXBuildFile section */
@@ -70,6 +73,10 @@
 		8BAC876CC149194CFD5DA88C /* Pods_PhotosUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotosUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BACD18D1DA6EA6F00F4612B /* UIViewControllerError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewControllerError.swift; path = Common/UIViewControllerError.swift; sourceTree = "<group>"; };
 		8BACD18F1DA6F4F200F4612B /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		8BACD1911DA74E5100F4612B /* UIImageAverageColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImageAverageColor.swift; path = Common/UIImageAverageColor.swift; sourceTree = "<group>"; };
+		8BACD1941DA750BC00F4612B /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoCell.swift; path = View/PhotoCell.swift; sourceTree = "<group>"; };
+		8BACD1961DA7547400F4612B /* Photos-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Photos-Bridging-Header.h"; sourceTree = "<group>"; };
+		8BACD1991DA7751800F4612B /* UIImageAverageColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageAverageColorTests.swift; sourceTree = "<group>"; };
 		8BD0DD611DA6D4E7008ABBEC /* PhotoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoManager.swift; path = Manager/PhotoManager.swift; sourceTree = "<group>"; };
 		B6356E9B4F6A5EA965F1981F /* Pods-PhotosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotosUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotosUITests/Pods-PhotosUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BD26211DC751ADACB379965F /* Pods-PhotosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotosUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotosUITests/Pods-PhotosUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -114,6 +121,7 @@
 				09FE5BD01DA5696A00E8E5FD /* Products */,
 				11260B9ADF3DF0870E130E13 /* Pods */,
 				2A96BD929AA078C99CEA2F56 /* Frameworks */,
+				8BACD1961DA7547400F4612B /* Photos-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -130,6 +138,7 @@
 		09FE5BD11DA5696A00E8E5FD /* Photos */ = {
 			isa = PBXGroup;
 			children = (
+				8BACD1931DA7509900F4612B /* View */,
 				8BACD18C1DA6EA5200F4612B /* Common */,
 				8BD0DD601DA6D4C8008ABBEC /* Manager */,
 				09FE5C031DA56FEC00E8E5FD /* Network */,
@@ -151,6 +160,7 @@
 				8B8D575C1DA6082700904C96 /* PhotosTests.swift */,
 				09FE5BE71DA5696B00E8E5FD /* PhotosApiTests.swift */,
 				8B8D57601DA68B0200904C96 /* PhotosViewModelTests.swift */,
+				8BACD1991DA7751800F4612B /* UIImageAverageColorTests.swift */,
 				09FE5BE91DA5696B00E8E5FD /* Info.plist */,
 			);
 			path = PhotosTests;
@@ -209,8 +219,17 @@
 			isa = PBXGroup;
 			children = (
 				8BACD18D1DA6EA6F00F4612B /* UIViewControllerError.swift */,
+				8BACD1911DA74E5100F4612B /* UIImageAverageColor.swift */,
 			);
 			name = Common;
+			sourceTree = "<group>";
+		};
+		8BACD1931DA7509900F4612B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8BACD1941DA750BC00F4612B /* PhotoCell.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		8BD0DD601DA6D4C8008ABBEC /* Manager */ = {
@@ -504,6 +523,8 @@
 				8BACD18E1DA6EA6F00F4612B /* UIViewControllerError.swift in Sources */,
 				09FE5C051DA5700D00E8E5FD /* PhotoApi.swift in Sources */,
 				09FE5C071DA5946B00E8E5FD /* PhotosViewModel.swift in Sources */,
+				8BACD1921DA74E5100F4612B /* UIImageAverageColor.swift in Sources */,
+				8BACD1951DA750BC00F4612B /* PhotoCell.swift in Sources */,
 				09FE5BD51DA5696A00E8E5FD /* ViewController.swift in Sources */,
 				8BACD1901DA6F4F200F4612B /* ListViewController.swift in Sources */,
 				09FE5BD31DA5696A00E8E5FD /* AppDelegate.swift in Sources */,
@@ -517,6 +538,7 @@
 				09FE5BE81DA5696B00E8E5FD /* PhotosApiTests.swift in Sources */,
 				8B8D575D1DA6082700904C96 /* PhotosTests.swift in Sources */,
 				8B8D57611DA68B0200904C96 /* PhotosViewModelTests.swift in Sources */,
+				8BACD19A1DA7751800F4612B /* UIImageAverageColorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -653,10 +675,13 @@
 			baseConfigurationReference = 37B8C4F47E3DE29CAAC73A0C /* Pods-Photos.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Photos/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ezefranca.Photos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Photos-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -665,10 +690,12 @@
 			baseConfigurationReference = 6C529104722F102431663A55 /* Pods-Photos.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Photos/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ezefranca.Photos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Photos-Bridging-Header.h";
 			};
 			name = Release;
 		};

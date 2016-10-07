@@ -51,7 +51,7 @@ class ListViewController: UIViewController, ErrorAlerts, NetworkManager {
     
     func setupTableView() {
         tableView.dataSource = self
-        //tableView.delegate =  self
+        tableView.delegate =  self
     }
     
 }

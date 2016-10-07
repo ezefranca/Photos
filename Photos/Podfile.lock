@@ -1,35 +1,54 @@
 PODS:
   - Alamofire (3.5.1)
   - BusyNavigationBar (1.1.0)
+  - FLAnimatedImage (1.0.12)
+  - HanekeSwift (0.10.1)
   - LNRSimpleNotifications (0.4.2)
   - ObjectMapper (1.5.0)
+  - PINCache (2.3)
+  - PINRemoteImage (2.1.4):
+    - PINRemoteImage/FLAnimatedImage (= 2.1.4)
+  - PINRemoteImage/Core (2.1.4):
+    - PINCache (>= 2.1)
+  - PINRemoteImage/FLAnimatedImage (2.1.4):
+    - FLAnimatedImage (>= 1.0)
+    - PINRemoteImage/Core
   - RxCocoa (2.6.0):
     - RxSwift (~> 2.5)
   - RxSwift (2.6.0)
   - RxTests (2.6.0):
     - RxSwift (~> 2.5)
   - SwiftyJSON (2.3.2)
+  - UIImageColors (1.0.4)
 
 DEPENDENCIES:
   - Alamofire (~> 3.0)
   - BusyNavigationBar (~> 1.1.0)
+  - HanekeSwift (~> 0.10.1)
   - LNRSimpleNotifications (~> 0.4.2)
   - ObjectMapper (~> 1.5)
+  - PINRemoteImage
   - RxCocoa
   - RxSwift
   - RxTests
   - SwiftyJSON
+  - UIImageColors (~> 1.0.0)
 
 SPEC CHECKSUMS:
   Alamofire: 0dfba1184a543e2aa160f4e39cac4e8aba48d223
   BusyNavigationBar: cde4cbb450b58448204d5ab87f2dce07b4f0d7e1
+  FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
+  HanekeSwift: '08e47d3d0f2899ec58e5d257beba0de619aca9e8'
   LNRSimpleNotifications: 39eb975feb035884e4b3c1b116e75a3933f52b2d
   ObjectMapper: 386645adca9d9d23b95eda43090b09d66444cf14
+  PINCache: ce36ed282031b92fc7733ffe831f474ff80fddc2
+  PINRemoteImage: 4ac4011c5caefd6befd99758e09becede05d3226
   RxCocoa: 89ab00d5753502520227940e3a0e0a0413683c6b
   RxSwift: 77f3a0b15324baa7a1c9bfa9f199648a82424e26
   RxTests: cdcc379c70e80089a8bc2c99515223339d1c3b81
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  UIImageColors: ac2a42c61e870849c7fa5b9cbae2744a0873f5f7
 
-PODFILE CHECKSUM: dad579a8c5b852e24b06401700f9556aa65ec82b
+PODFILE CHECKSUM: d4debbda2f4a3861302d3006b058aee6b9ca70e7
 
 COCOAPODS: 1.1.0.rc.2

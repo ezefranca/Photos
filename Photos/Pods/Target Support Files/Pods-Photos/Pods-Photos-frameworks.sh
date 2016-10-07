@@ -86,18 +86,28 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Alamofire/Alamofire.framework"
   install_framework "$BUILT_PRODUCTS_DIR/BusyNavigationBar/BusyNavigationBar.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/FLAnimatedImage/FLAnimatedImage.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/HanekeSwift/Haneke.framework"
   install_framework "$BUILT_PRODUCTS_DIR/LNRSimpleNotifications/LNRSimpleNotifications.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ObjectMapper/ObjectMapper.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/PINCache/PINCache.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/PINRemoteImage/PINRemoteImage.framework"
   install_framework "$BUILT_PRODUCTS_DIR/RxCocoa/RxCocoa.framework"
   install_framework "$BUILT_PRODUCTS_DIR/RxSwift/RxSwift.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftyJSON/SwiftyJSON.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/UIImageColors/UIImageColors.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Alamofire/Alamofire.framework"
   install_framework "$BUILT_PRODUCTS_DIR/BusyNavigationBar/BusyNavigationBar.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/FLAnimatedImage/FLAnimatedImage.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/HanekeSwift/Haneke.framework"
   install_framework "$BUILT_PRODUCTS_DIR/LNRSimpleNotifications/LNRSimpleNotifications.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ObjectMapper/ObjectMapper.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/PINCache/PINCache.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/PINRemoteImage/PINRemoteImage.framework"
   install_framework "$BUILT_PRODUCTS_DIR/RxCocoa/RxCocoa.framework"
   install_framework "$BUILT_PRODUCTS_DIR/RxSwift/RxSwift.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftyJSON/SwiftyJSON.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/UIImageColors/UIImageColors.framework"
 fi

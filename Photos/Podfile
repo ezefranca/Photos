@@ -8,6 +8,9 @@ target 'Photos' do
 	 pod 'RxCocoa'
 	 pod 'LNRSimpleNotifications', '~> 0.4.2'
 	 pod 'BusyNavigationBar', '~> 1.1.0'
+	 pod 'UIImageColors', '~> 1.0.0'
+	 pod 'PINRemoteImage'
+	 pod 'HanekeSwift', '~> 0.10.1'
 target 'PhotosTests' do
     inherit! :search_paths
     	pod 'RxSwift'
