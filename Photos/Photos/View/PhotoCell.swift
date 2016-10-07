@@ -9,6 +9,7 @@
 import UIKit
 import UIImageColors
 import PINRemoteImage
+import Font_Awesome_Swift
 
 class PhotoCell: UITableViewCell {
     
@@ -17,7 +18,9 @@ class PhotoCell: UITableViewCell {
     var viewModel: PhotosViewModel!{
         didSet{
             self.title.text = viewModel.title
-            self.id.text = viewModel.title
+            
+            self.albumid.setFAText(prefixText: "", icon: FAType.FAPictureO, postfixText: String(viewModel.albumId!), size: 12.0, iconSize: 12.0)
+            self.id.setFAText(prefixText: "", icon: FAType.FAFileO, postfixText: String(viewModel.internalIdentifier!), size: 12.0, iconSize: 12.0)
             self.imageCell!.pin_updateWithProgress = true
             //self.line.image = UIImage.imageWithColor(UIColor.clearColor())
             self.imageCell.pin_setImageFromURL(NSURL(string: viewModel.thumbnailUrl!), placeholderImage: UIImage(named: "placeholder")) { (result) in
@@ -47,15 +50,10 @@ class PhotoCell: UITableViewCell {
     @IBOutlet var title: UILabel!
     @IBOutlet var id: UILabel!
     @IBOutlet var albumid: UILabel!
-    
     @IBOutlet var line: UIImageView!
     
-    init(viewModel: PhotosViewModel){
+    func setup(viewModel: PhotosViewModel){
         self.viewModel = viewModel
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     //    override func prepareForReuse() {

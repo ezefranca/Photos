@@ -2,7 +2,7 @@ PODS:
   - Alamofire (3.5.1)
   - BusyNavigationBar (1.1.0)
   - FLAnimatedImage (1.0.12)
-  - HanekeSwift (0.10.1)
+  - Font-Awesome-Swift (1.4.8)
   - LNRSimpleNotifications (0.4.2)
   - ObjectMapper (1.5.0)
   - PINCache (2.3)
@@ -24,7 +24,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 3.0)
   - BusyNavigationBar (~> 1.1.0)
-  - HanekeSwift (~> 0.10.1)
+  - Font-Awesome-Swift (~> 1.4.8)
   - LNRSimpleNotifications (~> 0.4.2)
   - ObjectMapper (~> 1.5)
   - PINRemoteImage
@@ -38,7 +38,7 @@ SPEC CHECKSUMS:
   Alamofire: 0dfba1184a543e2aa160f4e39cac4e8aba48d223
   BusyNavigationBar: cde4cbb450b58448204d5ab87f2dce07b4f0d7e1
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
-  HanekeSwift: '08e47d3d0f2899ec58e5d257beba0de619aca9e8'
+  Font-Awesome-Swift: 354c9440b0e4d692e31171c84091f3510e8f9468
   LNRSimpleNotifications: 39eb975feb035884e4b3c1b116e75a3933f52b2d
   ObjectMapper: 386645adca9d9d23b95eda43090b09d66444cf14
   PINCache: ce36ed282031b92fc7733ffe831f474ff80fddc2
@@ -49,6 +49,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   UIImageColors: ac2a42c61e870849c7fa5b9cbae2744a0873f5f7
 
-PODFILE CHECKSUM: d4debbda2f4a3861302d3006b058aee6b9ca70e7
+PODFILE CHECKSUM: c3575497756325e558b5032e735928b7f37f6695
 
 COCOAPODS: 1.1.0.rc.2

@@ -10,7 +10,8 @@ target 'Photos' do
 	 pod 'BusyNavigationBar', '~> 1.1.0'
 	 pod 'UIImageColors', '~> 1.0.0'
 	 pod 'PINRemoteImage'
-	 pod 'HanekeSwift', '~> 0.10.1'
+	 #pod 'HanekeSwift', '~> 0.10.1'
+	pod 'Font-Awesome-Swift', '~> 1.4.8'
 target 'PhotosTests' do
     inherit! :search_paths
     	pod 'RxSwift'
