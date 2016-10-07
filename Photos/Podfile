@@ -7,6 +7,7 @@ target 'Photos' do
 	 pod 'RxSwift'
 	 pod 'RxCocoa'
 	 pod 'LNRSimpleNotifications', '~> 0.4.2'
+	 pod 'BusyNavigationBar', '~> 1.1.0'
 target 'PhotosTests' do
     inherit! :search_paths
     	pod 'RxSwift'
