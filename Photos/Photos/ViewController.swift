@@ -19,8 +19,11 @@ import BusyNavigationBar
 class ListViewController: UIViewController, ErrorAlerts, NetworkManager {
     
     @IBOutlet var tableView: UITableView!
+    
     var disposeBag = DisposeBag()
+    
     var viewModels = ViewModel()
+    
     var manager:PhotoManager = PhotoManager(downloader: PhotoApi())
     
     //let data = Observable.just([Contributor]())
@@ -28,7 +31,6 @@ class ListViewController: UIViewController, ErrorAlerts, NetworkManager {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.showLoaderNavigation()
-        //self.setupTableView()
         print("viewDidLoad")
         
         //        viewModels.bindTo(tableView.rx_itemsWithCellIdentifier(PhotoCell.reuseIdentifier!)) { _, model, cell in
@@ -41,7 +43,6 @@ class ListViewController: UIViewController, ErrorAlerts, NetworkManager {
             .drive(tableView.rx_itemsWithCellIdentifier(PhotoCell.reuseIdentifier!)) { _, photo, cell in
                 let cell:PhotoCell = cell as! PhotoCell
                 cell.setup(PhotosViewModel(photo: photo))
-                print("maaaaaaaaaaa")
             }
             .addDisposableTo(disposeBag)
         
@@ -51,7 +52,6 @@ class ListViewController: UIViewController, ErrorAlerts, NetworkManager {
                     self.showError(ErrorOptions(message: (error as NSError).domain))
                 },
                 onCompleted: {
-                    _ = self.manager.getViewModels()
                     self.stopLoaderNavigation()
                 },
                 onDisposed: {
@@ -59,13 +59,6 @@ class ListViewController: UIViewController, ErrorAlerts, NetworkManager {
                 }
             )
             .addDisposableTo(disposeBag)
-        
-        
-        //        self.viewModels.bindTo(self.tableView.rx_itemsWithCellIdentifier(PhotoCell.reuseIdentifier!)) { _, model, cell in
-        //            let cell:PhotoCell = cell as! PhotoCell
-        //            cell.setup(model)
-        //            }
-        //            .addDisposableTo(self.disposeBag)
     }
 }
 

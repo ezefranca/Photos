@@ -35,7 +35,6 @@ public class PhotoManager {
                         observer.on(.Error(error))
                     },
                     onCompleted: {
-                        self.getViewModels(self.photoModels)
                         observer.on(.Completed)
                     }
                     
@@ -48,16 +47,13 @@ public class PhotoManager {
     }
     
     private func getViewModels(models:[Photos]) -> [PhotosViewModel] {
-
-        for m in models {
-            let p = PhotosViewModel(photo: m)
-            print(p.title)
-            self.photoViewModels.append(p)
+        
+        models
+            .flatMap{$0}
+            .forEach { ( photo : Photos) -> () in
+                self.photoViewModels.append(PhotosViewModel(photo: photo))
         }
-         
-        for a in (photoViewModels) {
-            print(a.title)
-        }
+        
         return photoViewModels
     }
     
