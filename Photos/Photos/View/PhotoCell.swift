@@ -27,7 +27,8 @@ class PhotoCell: UITableViewCell {
                 
                 self.imageCell!.image!.getColors { colors in
                     
-                    ///       self.line.image = UIImage.imageWithColor(colors.backgroundColor)
+                    //self.backgroundColor = colors.backgroundColor
+                    //      self.line.image = UIImage.imageWithColor(colors.backgroundColor)
                     
                 }
                 

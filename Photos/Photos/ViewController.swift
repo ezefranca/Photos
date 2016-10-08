@@ -14,8 +14,6 @@ import Foundation
 import ObjectMapper
 import BusyNavigationBar
 
-
-
 class ListViewController: UIViewController, ErrorAlerts, NetworkManager {
     
     @IBOutlet var tableView: UITableView!
@@ -26,7 +24,7 @@ class ListViewController: UIViewController, ErrorAlerts, NetworkManager {
     
     var manager:PhotoManager = PhotoManager(downloader: PhotoApi())
     
-    //let data = Observable.just([Contributor]())
+    private let refresh = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,10 +32,12 @@ class ListViewController: UIViewController, ErrorAlerts, NetworkManager {
         print("viewDidLoad")
         
         //        viewModels.bindTo(tableView.rx_itemsWithCellIdentifier(PhotoCell.reuseIdentifier!)) { _, model, cell in
-        //            let cell:PhotoCell = cell as! PhotoCell
+        //            let cell:PhotoCellvarcell as! PhotoCell
         //            cell.setup(model)
         //            }
         //            .addDisposableTo(disposeBag)
+        
+        setupPullRefresh()
         
         viewModels.data
             .drive(tableView.rx_itemsWithCellIdentifier(PhotoCell.reuseIdentifier!)) { _, photo, cell in
@@ -53,12 +53,22 @@ class ListViewController: UIViewController, ErrorAlerts, NetworkManager {
                 },
                 onCompleted: {
                     self.stopLoaderNavigation()
+                    self.refresh.endRefreshing()
                 },
                 onDisposed: {
                     print("Disposed 😎")
                 }
             )
             .addDisposableTo(disposeBag)
+        
+        refresh.rx_controlEvent(.ValueChanged).subscribeNext { [unowned self] x -> Void in
+            self.viewModels.load.value = true
+            }.addDisposableTo(disposeBag)
+    }
+    
+    private func setupPullRefresh() {
+        refresh.tintColor = UIColor.redColor()
+        tableView.addSubview(refresh)
     }
 }
 

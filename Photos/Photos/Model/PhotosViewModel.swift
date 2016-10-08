@@ -44,7 +44,7 @@ struct PhotosViewModel {
 struct ViewModel {
     
     var manager:PhotoApi = PhotoApi()
-    let load = Variable("")
+    let load = Variable<Bool>(false)
     let disposeBag = DisposeBag()
     
     lazy var data: Driver<[Photos]> = {
