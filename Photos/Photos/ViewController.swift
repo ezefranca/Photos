@@ -14,20 +14,36 @@ import Foundation
 import ObjectMapper
 import BusyNavigationBar
 
-var manager:PhotoManager = PhotoManager(downloader: PhotoApi())
+
 
 class ListViewController: UIViewController, ErrorAlerts, NetworkManager {
     
     @IBOutlet var tableView: UITableView!
     var disposeBag = DisposeBag()
-    var viewModels:[PhotosViewModel]?
+    var viewModels = ViewModel()
+    var manager:PhotoManager = PhotoManager(downloader: PhotoApi())
+    
+    //let data = Observable.just([Contributor]())
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.showLoaderNavigation()
-        self.setupTableView()
+        //self.setupTableView()
         print("viewDidLoad")
         
+        //        viewModels.bindTo(tableView.rx_itemsWithCellIdentifier(PhotoCell.reuseIdentifier!)) { _, model, cell in
+        //            let cell:PhotoCell = cell as! PhotoCell
+        //            cell.setup(model)
+        //            }
+        //            .addDisposableTo(disposeBag)
+        
+        viewModels.data
+            .drive(tableView.rx_itemsWithCellIdentifier(PhotoCell.reuseIdentifier!)) { _, photo, cell in
+                let cell:PhotoCell = cell as! PhotoCell
+                cell.setup(PhotosViewModel(photo: photo))
+                print("maaaaaaaaaaa")
+            }
+            .addDisposableTo(disposeBag)
         
         manager.getViewModels()
             .subscribe(
@@ -35,24 +51,21 @@ class ListViewController: UIViewController, ErrorAlerts, NetworkManager {
                     self.showError(ErrorOptions(message: (error as NSError).domain))
                 },
                 onCompleted: {
-                    self.tableView.reloadData()
+                    _ = self.manager.getViewModels()
                     self.stopLoaderNavigation()
-                    //                    print("Completo 💪")
-                    //                    self.navigationController?.navigationBar.stop()
-                    //                    print(manager.photoViewModels.count)
-                    //                    print("aaaa")
                 },
                 onDisposed: {
                     print("Disposed 😎")
                 }
             )
             .addDisposableTo(disposeBag)
+        
+        
+        //        self.viewModels.bindTo(self.tableView.rx_itemsWithCellIdentifier(PhotoCell.reuseIdentifier!)) { _, model, cell in
+        //            let cell:PhotoCell = cell as! PhotoCell
+        //            cell.setup(model)
+        //            }
+        //            .addDisposableTo(self.disposeBag)
     }
-    
-    func setupTableView() {
-        tableView.dataSource = self
-        tableView.delegate =  self
-    }
-    
 }
 

@@ -22,7 +22,6 @@
 		8B8D575D1DA6082700904C96 /* PhotosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8D575C1DA6082700904C96 /* PhotosTests.swift */; };
 		8B8D57611DA68B0200904C96 /* PhotosViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8D57601DA68B0200904C96 /* PhotosViewModelTests.swift */; };
 		8BACD18E1DA6EA6F00F4612B /* UIViewControllerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BACD18D1DA6EA6F00F4612B /* UIViewControllerError.swift */; };
-		8BACD1901DA6F4F200F4612B /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BACD18F1DA6F4F200F4612B /* ListViewController.swift */; };
 		8BACD1921DA74E5100F4612B /* UIImageAverageColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BACD1911DA74E5100F4612B /* UIImageAverageColor.swift */; };
 		8BACD1951DA750BC00F4612B /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BACD1941DA750BC00F4612B /* PhotoCell.swift */; };
 		8BACD19A1DA7751800F4612B /* UIImageAverageColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BACD1991DA7751800F4612B /* UIImageAverageColorTests.swift */; };
@@ -72,7 +71,6 @@
 		8B8D57601DA68B0200904C96 /* PhotosViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosViewModelTests.swift; sourceTree = "<group>"; };
 		8BAC876CC149194CFD5DA88C /* Pods_PhotosUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotosUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BACD18D1DA6EA6F00F4612B /* UIViewControllerError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewControllerError.swift; path = Common/UIViewControllerError.swift; sourceTree = "<group>"; };
-		8BACD18F1DA6F4F200F4612B /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		8BACD1911DA74E5100F4612B /* UIImageAverageColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImageAverageColor.swift; path = Common/UIImageAverageColor.swift; sourceTree = "<group>"; };
 		8BACD1941DA750BC00F4612B /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoCell.swift; path = View/PhotoCell.swift; sourceTree = "<group>"; };
 		8BACD1961DA7547400F4612B /* Photos-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Photos-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -145,7 +143,6 @@
 				09FE5C001DA56B3A00E8E5FD /* Model */,
 				09FE5BD21DA5696A00E8E5FD /* AppDelegate.swift */,
 				09FE5BD41DA5696A00E8E5FD /* ViewController.swift */,
-				8BACD18F1DA6F4F200F4612B /* ListViewController.swift */,
 				09FE5BD61DA5696A00E8E5FD /* Main.storyboard */,
 				09FE5BD91DA5696A00E8E5FD /* Assets.xcassets */,
 				09FE5BDB1DA5696A00E8E5FD /* LaunchScreen.storyboard */,
@@ -388,7 +385,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		35022D75889ED527DF1A1484 /* [CP] Check Pods Manifest.lock */ = {
@@ -403,7 +400,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		44146CCDB0DEF8CA676B3E75 /* [CP] Check Pods Manifest.lock */ = {
@@ -418,7 +415,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		58D25D469726DA57D9F7AE5B /* [CP] Embed Pods Frameworks */ = {
@@ -526,7 +523,6 @@
 				8BACD1921DA74E5100F4612B /* UIImageAverageColor.swift in Sources */,
 				8BACD1951DA750BC00F4612B /* PhotoCell.swift in Sources */,
 				09FE5BD51DA5696A00E8E5FD /* ViewController.swift in Sources */,
-				8BACD1901DA6F4F200F4612B /* ListViewController.swift in Sources */,
 				09FE5BD31DA5696A00E8E5FD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

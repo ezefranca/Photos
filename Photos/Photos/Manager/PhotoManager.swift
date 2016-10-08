@@ -12,15 +12,8 @@ import RxSwift
 
 public class PhotoManager {
     
-    var photoModels: [Photos] = []
-    
-    public var photoViewModels: [PhotosViewModel] = []
-    //    {
-    //        guard let vm = self.photoViewModels else {
-    //            return nil
-    //        }
-    //        return vm
-    //    }
+    var photoModels = [Photos]()
+    var photoViewModels = [PhotosViewModel]()
     
     var photoDownloader: PhotoApi
     var disposeBag = DisposeBag()
@@ -29,19 +22,14 @@ public class PhotoManager {
         self.photoDownloader = downloader
     }
     
-    func getViewModels() -> Observable<AnyObject?> {
+    func getViewModels() -> Observable<[PhotosViewModel]> {
         
         return Observable.create({ (observer) -> Disposable in
             
             self.photoDownloader.download()
-                .retry(3)
-                .timeout(5, scheduler: MainScheduler.instance)
-                .subscribeOn(self.photoDownloader.backgroundScheduler)
-                .observeOn(self.photoDownloader.mainScheduler)
                 .subscribe(
                     onNext: { data in
-                        self.parseData(data!)
-                        observer.on(.Next(data))
+                        observer.onNext(self.getViewModels(data))
                     },
                     onError: { error in
                         observer.on(.Error(error))
@@ -59,37 +47,18 @@ public class PhotoManager {
         });
     }
     
-    private func parseData(data:AnyObject) {
-        do {
-            let json : AnyObject! = try NSJSONSerialization.JSONObjectWithData(data as! NSData, options: NSJSONReadingOptions.MutableContainers)
-            guard let photos : Array<Photos> = Mapper<Photos>().mapArray(json) else {
-                return
-            }
-            self.photoModels = photos
-            
-        } catch {
-            print(NSString(data: data as! NSData, encoding: NSUTF8StringEncoding))
-        }
-        //self.getViewModels(self.photoModels)!
-    }
-    
-    private func getViewModels(models:[Photos]) -> Void? {
-        
+    private func getViewModels(models:[Photos]) -> [PhotosViewModel] {
+
         for m in models {
             let p = PhotosViewModel(photo: m)
             print(p.title)
             self.photoViewModels.append(p)
         }
-        
-        //        guard let vm = photoViewModels else {
-        //            return ()
-        //        }
-        //        
-        //        self.photoViewModels = vm
-        //        for a in (photoViewModels?)! {
-        //            print(a.title)
-        //        }
-        return ()
+         
+        for a in (photoViewModels) {
+            print(a.title)
+        }
+        return photoViewModels
     }
     
 }

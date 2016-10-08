@@ -7,14 +7,18 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
+import ObjectMapper
+import Alamofire
 
-public struct PhotosViewModel {
+struct PhotosViewModel {
     
-    public var title: String?
-    public var url: String?
-    public var internalIdentifier: Int?
-    public var thumbnailUrl: String?
-    public var albumId: Int?
+    var title: String?
+    var url: String?
+    var internalIdentifier: Int?
+    var thumbnailUrl: String?
+    var albumId: Int?
     
     var model: Photos! {
         didSet{
@@ -36,3 +40,24 @@ public struct PhotosViewModel {
     
 }
 
+
+struct ViewModel {
+    
+    var manager:PhotoApi = PhotoApi()
+    let load = Variable("")
+    let disposeBag = DisposeBag()
+    
+    lazy var data: Driver<[Photos]> = {
+        return self.load.asObservable()
+            .throttle(0.3, scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .flatMapLatest {_ in
+                self.getPhotos()
+            }
+            .asDriver(onErrorJustReturn: [])
+    }()
+    
+    mutating func getPhotos() -> Observable<[Photos]> {
+        return (manager.download())
+    }
+}
