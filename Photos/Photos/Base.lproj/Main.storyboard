@@ -111,8 +111,13 @@
                             <constraint firstAttribute="trailing" secondItem="SAq-Qy-R0C" secondAttribute="trailing" id="iEN-dG-ggu"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Abg-zs-h8K"/>
+                    <navigationItem key="navigationItem" id="Abg-zs-h8K">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="s8H-0h-q30">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="refresh" destination="s8H-0h-q30" id="nFw-Mx-1Zt"/>
                         <outlet property="tableView" destination="SAq-Qy-R0C" id="VHs-75-WVj"/>
                     </connections>
                 </viewController>

@@ -17,8 +17,10 @@ enum service {
 
 public class PhotoApi {
     
+    var photoViewModels = [PhotosViewModel]()
     
     let URLSession = Foundation.NSURLSession.sharedSession()
+    var disposeBag = DisposeBag()
     
     public var backgroundScheduler: ImmediateSchedulerType {
         let operationQueue = NSOperationQueue()
@@ -67,5 +69,43 @@ public class PhotoApi {
             print(NSString(data: data as! NSData, encoding: NSUTF8StringEncoding))
         }
         return []
+    }
+    
+    func getViewModels() -> Observable<[PhotosViewModel]> {
+        
+        print("comecando download")
+        return Observable.create({ (observer) -> Disposable in
+            
+            self.download()
+                .retry(5)
+                .error
+                .subscribe(
+                    onNext: { data in
+                        observer.onNext(self.getViewModels(data))
+                    },
+                    onError: { error in
+                        observer.on(.Error(error))
+                    },
+                    onCompleted: {
+                        observer.on(.Completed)
+                    }
+                    
+                )
+                .addDisposableTo(self.disposeBag)
+            return AnonymousDisposable {
+                self.cancel()
+            }
+        });
+    }
+    
+    private func getViewModels(models:[Photos]) -> [PhotosViewModel] {
+        
+        models
+            .flatMap{$0}
+            .forEach { ( photo : Photos) -> () in
+                self.photoViewModels.append(PhotosViewModel(photo: photo))
+        }
+        
+        return photoViewModels
     }
 }

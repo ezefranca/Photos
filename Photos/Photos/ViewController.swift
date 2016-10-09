@@ -18,57 +18,70 @@ class ListViewController: UIViewController, ErrorAlerts, NetworkManager {
     
     @IBOutlet var tableView: UITableView!
     
+    @IBOutlet var refresh: UIBarButtonItem!
+    
     var disposeBag = DisposeBag()
-    
-    var viewModels = ViewModel()
-    
-    var manager:PhotoManager = PhotoManager(downloader: PhotoApi())
-    
-    private let refresh = UIRefreshControl()
+    var api = PhotoApi()
+    var viewModel = ViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.showLoaderNavigation()
+        //self.download()
+        
         print("viewDidLoad")
         
-        //        viewModels.bindTo(tableView.rx_itemsWithCellIdentifier(PhotoCell.reuseIdentifier!)) { _, model, cell in
-        //            let cell:PhotoCellvarcell as! PhotoCell
-        //            cell.setup(model)
-        //            }
-        //            .addDisposableTo(disposeBag)
+        //        manager.getViewModels()
         
-        setupPullRefresh()
         
-        viewModels.data
+        //        refresh.rx_tap.asDriver()
+        //            .driveNext { [unowned self] in
+        //                //self.viewModel.data
+        //                //.drive(tableView.rx_itemsWithCellIdentifier(PhotoCell.reuseIdentifier!, cellType: PhotoCell.self))
+        //                .addDisposableTo(self.disposeBag)
+        //        }
+        
+        
+        //            .subscribe(
+        //                onError: { error in
+        //                    self.showError(ErrorOptions(message: (error as NSError).domain))
+        //                },
+        //                onCompleted: {
+        //                    print("Completo 😎")
+        //                    self.stopLoaderNavigation()
+        //                },
+        //                onDisposed: {
+        //                    print("Disposed 😎")
+        //                }
+        //        )
+        
+        
+        viewModel.data.asObservable()
+            .subscribe(onNext: { (_) in
+                print("PROXIMOO 😎")
+                }, onError: { (_) in
+                    print("Erro 😎")
+                }, onCompleted: {
+                    //Quando todos ViewModels ja foram usados
+                    print("Completo 😎")
+            }) {
+            }
+            .addDisposableTo(disposeBag)
+        
+        viewModel.data
             .drive(tableView.rx_itemsWithCellIdentifier(PhotoCell.reuseIdentifier!)) { _, photo, cell in
                 let cell:PhotoCell = cell as! PhotoCell
                 cell.setup(PhotosViewModel(photo: photo))
             }
             .addDisposableTo(disposeBag)
         
-        manager.getViewModels()
-            .subscribe(
-                onError: { error in
-                    self.showError(ErrorOptions(message: (error as NSError).domain))
-                },
-                onCompleted: {
-                    self.stopLoaderNavigation()
-                    self.refresh.endRefreshing()
-                },
-                onDisposed: {
-                    print("Disposed 😎")
-                }
-            )
-            .addDisposableTo(disposeBag)
         
-        refresh.rx_controlEvent(.ValueChanged).subscribeNext { [unowned self] x -> Void in
-            self.viewModels.load.value = true
-            }.addDisposableTo(disposeBag)
-    }
-    
-    private func setupPullRefresh() {
-        refresh.tintColor = UIColor.redColor()
-        tableView.addSubview(refresh)
+        
+        //        viewModel.data.asObservable()
+        //            .subscribeNext { (photos) in
+        //                print(photos.first!.title)
+        //            }
+        //            .addDisposableTo(disposeBag)
+        
     }
 }
 
