@@ -14,11 +14,10 @@ import Foundation
 import ObjectMapper
 import BusyNavigationBar
 
-class ListViewController: UIViewController, ErrorAlerts, NetworkManager {
+class ListViewController: UIViewController, Alerts, NetworkManager {
     
     @IBOutlet var tableView: UITableView!
-    
-    @IBOutlet var refresh: UIBarButtonItem!
+    @IBOutlet var refreshData: UIBarButtonItem!
     
     var disposeBag = DisposeBag()
     var api = PhotoApi()
@@ -29,58 +28,47 @@ class ListViewController: UIViewController, ErrorAlerts, NetworkManager {
         //self.download()
         
         print("viewDidLoad")
+        print(PhotoCell.reuseIdentifier)
+        self.showLoaderNavigation()
         
-        //        manager.getViewModels()
-        
-        
-        //        refresh.rx_tap.asDriver()
-        //            .driveNext { [unowned self] in
-        //                //self.viewModel.data
-        //                //.drive(tableView.rx_itemsWithCellIdentifier(PhotoCell.reuseIdentifier!, cellType: PhotoCell.self))
-        //                .addDisposableTo(self.disposeBag)
-        //        }
-        
-        
-        //            .subscribe(
-        //                onError: { error in
-        //                    self.showError(ErrorOptions(message: (error as NSError).domain))
-        //                },
-        //                onCompleted: {
-        //                    print("Completo 😎")
-        //                    self.stopLoaderNavigation()
-        //                },
-        //                onDisposed: {
-        //                    print("Disposed 😎")
-        //                }
-        //        )
+        Reachable.filterInternetIsActive()
+            
+            .subscribeNext { (status) in
+                self.updateViewModelObservable()
+            }
+            .addDisposableTo(self.disposeBag)
         
         
-        viewModel.data.asObservable()
-            .subscribe(onNext: { (_) in
-                print("PROXIMOO 😎")
-                }, onError: { (_) in
-                    print("Erro 😎")
-                }, onCompleted: {
-                    //Quando todos ViewModels ja foram usados
-                    print("Completo 😎")
-            }) {
+        Reachable.filterInternetIsOffline()
+            .subscribeNext { (status) in
+                self.showMessage(Options(message: "Falha de internet", type: .error))
+                self.stopLoaderNavigation()
+            }
+            .addDisposableTo(self.disposeBag)
+        
+        refreshData.rx_tap.asDriver()
+            .driveNext { [unowned self] in
+                self.showLoaderNavigation()
+                self.updateViewModelObservable()
             }
             .addDisposableTo(disposeBag)
         
-        viewModel.data
-            .drive(tableView.rx_itemsWithCellIdentifier(PhotoCell.reuseIdentifier!)) { _, photo, cell in
+        
+    }
+    
+    func updateViewModelObservable() {
+        
+        self.tableView.delegate = nil
+        self.tableView.dataSource = nil
+        self.viewModel.data.asDriver()
+            .asObservable()
+            .observeOn(MainScheduler.instance)
+            .bindTo(self.tableView.rx_itemsWithCellIdentifier(PhotoCell.reuseIdentifier)) { _, photo, cell in
                 let cell:PhotoCell = cell as! PhotoCell
                 cell.setup(PhotosViewModel(photo: photo))
             }
-            .addDisposableTo(disposeBag)
-        
-        
-        
-        //        viewModel.data.asObservable()
-        //            .subscribeNext { (photos) in
-        //                print(photos.first!.title)
-        //            }
-        //            .addDisposableTo(disposeBag)
+            .addDisposableTo(self.disposeBag)
+        self.stopLoaderNavigation()
         
     }
 }

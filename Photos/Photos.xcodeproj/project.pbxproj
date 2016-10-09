@@ -25,6 +25,8 @@
 		8BACD1921DA74E5100F4612B /* UIImageAverageColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BACD1911DA74E5100F4612B /* UIImageAverageColor.swift */; };
 		8BACD1951DA750BC00F4612B /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BACD1941DA750BC00F4612B /* PhotoCell.swift */; };
 		8BACD19A1DA7751800F4612B /* UIImageAverageColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BACD1991DA7751800F4612B /* UIImageAverageColorTests.swift */; };
+		8BACD1E11DA9CC5D00F4612B /* NetworkStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BACD1E01DA9CC5D00F4612B /* NetworkStatus.swift */; };
+		8BACD21D1DAA8F3600F4612B /* NetworkStatusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BACD21C1DAA8F3600F4612B /* NetworkStatusTests.swift */; };
 		EFA8FE880290873475B955A4 /* Pods_PhotosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BAC876CC149194CFD5DA88C /* Pods_PhotosUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +76,8 @@
 		8BACD1941DA750BC00F4612B /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoCell.swift; path = View/PhotoCell.swift; sourceTree = "<group>"; };
 		8BACD1961DA7547400F4612B /* Photos-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Photos-Bridging-Header.h"; sourceTree = "<group>"; };
 		8BACD1991DA7751800F4612B /* UIImageAverageColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageAverageColorTests.swift; sourceTree = "<group>"; };
+		8BACD1E01DA9CC5D00F4612B /* NetworkStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkStatus.swift; path = Network/NetworkStatus.swift; sourceTree = "<group>"; };
+		8BACD21C1DAA8F3600F4612B /* NetworkStatusTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkStatusTests.swift; sourceTree = "<group>"; };
 		B6356E9B4F6A5EA965F1981F /* Pods-PhotosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotosUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotosUITests/Pods-PhotosUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BD26211DC751ADACB379965F /* Pods-PhotosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotosUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotosUITests/Pods-PhotosUITests.release.xcconfig"; sourceTree = "<group>"; };
 		CC9A444AF857C1C6BD6C6F6B /* Pods_Photos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Photos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,6 +158,7 @@
 				8B8D575C1DA6082700904C96 /* PhotosTests.swift */,
 				09FE5BE71DA5696B00E8E5FD /* PhotosApiTests.swift */,
 				8B8D57601DA68B0200904C96 /* PhotosViewModelTests.swift */,
+				8BACD21C1DAA8F3600F4612B /* NetworkStatusTests.swift */,
 				8BACD1991DA7751800F4612B /* UIImageAverageColorTests.swift */,
 				09FE5BE91DA5696B00E8E5FD /* Info.plist */,
 			);
@@ -182,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				09FE5C041DA5700D00E8E5FD /* PhotoApi.swift */,
+				8BACD1E01DA9CC5D00F4612B /* NetworkStatus.swift */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -505,6 +511,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09FE5C021DA56B3A00E8E5FD /* Photos.swift in Sources */,
+				8BACD1E11DA9CC5D00F4612B /* NetworkStatus.swift in Sources */,
 				8BACD18E1DA6EA6F00F4612B /* UIViewControllerError.swift in Sources */,
 				09FE5C051DA5700D00E8E5FD /* PhotoApi.swift in Sources */,
 				09FE5C071DA5946B00E8E5FD /* PhotosViewModel.swift in Sources */,
@@ -520,6 +527,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09FE5BE81DA5696B00E8E5FD /* PhotosApiTests.swift in Sources */,
+				8BACD21D1DAA8F3600F4612B /* NetworkStatusTests.swift in Sources */,
 				8B8D575D1DA6082700904C96 /* PhotosTests.swift in Sources */,
 				8B8D57611DA68B0200904C96 /* PhotosViewModelTests.swift in Sources */,
 				8BACD19A1DA7751800F4612B /* UIImageAverageColorTests.swift in Sources */,

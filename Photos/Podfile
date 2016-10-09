@@ -1,26 +1,44 @@
-platform :ios, '8.0'
-use_frameworks!
-target 'Photos' do
+#plugin 'cocoapods-acknowledgements', :settings_bundle => true
+
+def common_pods
 	 pod 'Alamofire', '~> 3.0'
-         pod 'ObjectMapper', '~> 1.5'
-         pod 'SwiftyJSON'
+     pod 'ObjectMapper', '~> 1.5'
+     pod 'SwiftyJSON'
 	 pod 'RxSwift'
 	 pod 'RxCocoa'
 	 pod 'LNRSimpleNotifications', '~> 0.4.2'
 	 pod 'BusyNavigationBar', '~> 1.1.0'
 	 pod 'UIImageColors', '~> 1.0.0'
 	 pod 'PINRemoteImage'
-	 #pod 'HanekeSwift', '~> 0.10.1'
-	pod 'Font-Awesome-Swift', '~> 1.4.8'
-target 'PhotosTests' do
+	 pod 'Font-Awesome-Swift', '~> 1.4.8'
+	 pod 'ReachabilitySwift', '~> 2.0'
+     pod 'RxSwift'
+     pod 'RxCocoa'
+end
+
+def common_test_pods
+	 pod 'RxTests'
+end
+
+platform :ios, '8.0'
+use_frameworks!
+inhibit_all_warnings!
+
+project 'Photos.xcodeproj'
+
+target 'Photos' do
+  use_frameworks!
+
+  common_pods
+
+  target 'PhotosTests' do
     inherit! :search_paths
-    	pod 'RxSwift'
-	pod 'RxTests'  
+    common_test_pods
   end
 
   target 'PhotosUITests' do
     inherit! :search_paths
-    # Pods for testing
+    common_test_pods
   end
 
 end

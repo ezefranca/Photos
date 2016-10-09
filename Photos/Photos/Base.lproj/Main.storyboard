@@ -117,7 +117,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="refresh" destination="s8H-0h-q30" id="nFw-Mx-1Zt"/>
+                        <outlet property="refreshData" destination="s8H-0h-q30" id="G28-d9-4Bd"/>
                         <outlet property="tableView" destination="SAq-Qy-R0C" id="VHs-75-WVj"/>
                     </connections>
                 </viewController>

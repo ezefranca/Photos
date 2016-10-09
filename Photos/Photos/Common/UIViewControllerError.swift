@@ -9,15 +9,30 @@
 import UIKit
 import LNRSimpleNotifications
 import BusyNavigationBar
+import RxSwift
 
-struct ErrorOptions {
+enum typeAlert {
+    case error
+    case done
+    case warning
+    
+    var color: UIColor {
+        switch self {
+        case .error: return UIColor.redColor()
+        case .done: return UIColor.greenColor()
+        case .warning: return UIColor.orangeColor()
+        }
+    }
+}
+
+struct Options {
     let message: String
     let title: String
     var notificationManager = LNRNotificationManager()
     
-    init(message: String, title: String = "Erro de conexão!") {
+    init(message: String, title: String = "Erro!", type: typeAlert) {
         notificationManager.notificationsPosition = LNRNotificationPosition.Top
-        notificationManager.notificationsBackgroundColor = UIColor.redColor()
+        notificationManager.notificationsBackgroundColor = type.color
         notificationManager.notificationsTitleTextColor = UIColor.whiteColor()
         notificationManager.notificationsBodyTextColor = UIColor.whiteColor()
         notificationManager.notificationsSeperatorColor = UIColor.whiteColor()
@@ -26,15 +41,16 @@ struct ErrorOptions {
     }
 }
 
-protocol ErrorAlerts {
-    func showError(errorOptions: ErrorOptions)
+protocol Alerts {
+    func showMessage(options: Options)
 }
 
-extension ErrorAlerts where Self: UIViewController {
-    func showError(errorOptions: ErrorOptions) {
-        errorOptions.notificationManager.showNotification(errorOptions.title, body: errorOptions.message, onTap: nil)
+extension Alerts where Self: UIViewController {
+    func showMessage(options: Options) {
+        options.notificationManager.showNotification(options.title, body: options.message, onTap: nil)
         self.navigationController?.navigationBar.stop()
     }
+    
 }
 
 

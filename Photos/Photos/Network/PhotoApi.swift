@@ -35,7 +35,7 @@ public class PhotoApi {
     var request:Request? = nil
     
     
-    func download() -> Observable<[Photos]> {
+    public func download() -> Observable<[Photos]> {
         
         return Observable.create({ (observer) -> Disposable in
             self.request = Alamofire.request(.GET, service.baseURL!, parameters: nil)
@@ -78,7 +78,6 @@ public class PhotoApi {
             
             self.download()
                 .retry(5)
-                .error
                 .subscribe(
                     onNext: { data in
                         observer.onNext(self.getViewModels(data))
