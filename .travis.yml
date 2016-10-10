@@ -4,7 +4,6 @@ rvm:
   - 2.2.5
 
 install:
-  - pod repo update
   - pod install
 
 script:
