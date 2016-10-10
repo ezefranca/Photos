@@ -4,8 +4,7 @@ rvm:
   - 2.2.5
 
 install:
-  - pod install
-
+  
 script:
   - xcodebuild -workspace 'Photos.xcworkspace' -scheme 'Photos' -sdk iphonesimulator CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO test | xcpretty -c
 after_success:
