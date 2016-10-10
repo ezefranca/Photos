@@ -58,17 +58,10 @@ class ListViewController: UIViewController, Alerts, SegueHandlerType, CheckDepen
                     return
                 }
                 self!.selectedModel = model
+                self?.tableView.cellForRowAtIndexPath(indexPath)?.selected = false
                 self!.performSegueWithIdentifier(.DetailViewController, sender: nil)
             }
             .addDisposableTo(disposeBag)
-        
-        
-        tableView
-            .rx_itemDeselected
-            .observeOn(MainScheduler.instance)
-            .subscribeNext { [weak self] indexPath in
-                self?.tableView.cellForRowAtIndexPath(indexPath)?.selected = false
-            }.addDisposableTo(disposeBag)
         
         self.updateViewModelObservable()
     }
