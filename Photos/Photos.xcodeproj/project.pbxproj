@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09C451E21DABFD2A00E6EAAE /* ListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C451E11DABFD2A00E6EAAE /* ListViewControllerTests.swift */; };
+		09C451E41DAC022200E6EAAE /* DetailsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C451E31DAC022200E6EAAE /* DetailsViewControllerTests.swift */; };
+		09FB44051DABC7D6008FC080 /* SegueHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB44041DABC7D6008FC080 /* SegueHandler.swift */; };
+		09FB44071DABC92F008FC080 /* CheckDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB44061DABC92F008FC080 /* CheckDependencies.swift */; };
 		09FE5BD31DA5696A00E8E5FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FE5BD21DA5696A00E8E5FD /* AppDelegate.swift */; };
 		09FE5BD51DA5696A00E8E5FD /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FE5BD41DA5696A00E8E5FD /* ListViewController.swift */; };
 		09FE5BD81DA5696A00E8E5FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09FE5BD61DA5696A00E8E5FD /* Main.storyboard */; };
@@ -50,6 +54,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		09C451E11DABFD2A00E6EAAE /* ListViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewControllerTests.swift; sourceTree = "<group>"; };
+		09C451E31DAC022200E6EAAE /* DetailsViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewControllerTests.swift; sourceTree = "<group>"; };
+		09FB44041DABC7D6008FC080 /* SegueHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegueHandler.swift; path = Common/SegueHandler.swift; sourceTree = "<group>"; };
+		09FB44061DABC92F008FC080 /* CheckDependencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckDependencies.swift; path = Common/CheckDependencies.swift; sourceTree = "<group>"; };
 		09FE5BCF1DA5696A00E8E5FD /* Photos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09FE5BD21DA5696A00E8E5FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		09FE5BD41DA5696A00E8E5FD /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
@@ -163,6 +171,8 @@
 				8B8D57601DA68B0200904C96 /* PhotosViewModelTests.swift */,
 				8BACD21C1DAA8F3600F4612B /* NetworkStatusTests.swift */,
 				8BACD1991DA7751800F4612B /* UIImageAverageColorTests.swift */,
+				09C451E11DABFD2A00E6EAAE /* ListViewControllerTests.swift */,
+				09C451E31DAC022200E6EAAE /* DetailsViewControllerTests.swift */,
 				09FE5BE91DA5696B00E8E5FD /* Info.plist */,
 			);
 			path = PhotosTests;
@@ -223,6 +233,8 @@
 			children = (
 				8BACD18D1DA6EA6F00F4612B /* UIViewControllerError.swift */,
 				8BACD1911DA74E5100F4612B /* UIImageAverageColor.swift */,
+				09FB44041DABC7D6008FC080 /* SegueHandler.swift */,
+				09FB44061DABC92F008FC080 /* CheckDependencies.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -516,6 +528,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09FB44051DABC7D6008FC080 /* SegueHandler.swift in Sources */,
 				09FE5C021DA56B3A00E8E5FD /* Photos.swift in Sources */,
 				8BACD1E11DA9CC5D00F4612B /* NetworkStatus.swift in Sources */,
 				8BACD18E1DA6EA6F00F4612B /* UIViewControllerError.swift in Sources */,
@@ -525,6 +538,7 @@
 				8B7A466B1DAB2DE8002ECE7F /* DetailsView.swift in Sources */,
 				8BACD1951DA750BC00F4612B /* PhotoCell.swift in Sources */,
 				8BACD21F1DAB0FEC00F4612B /* DetailViewController.swift in Sources */,
+				09FB44071DABC92F008FC080 /* CheckDependencies.swift in Sources */,
 				09FE5BD51DA5696A00E8E5FD /* ListViewController.swift in Sources */,
 				09FE5BD31DA5696A00E8E5FD /* AppDelegate.swift in Sources */,
 			);
@@ -535,7 +549,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				09FE5BE81DA5696B00E8E5FD /* PhotosApiTests.swift in Sources */,
+				09C451E41DAC022200E6EAAE /* DetailsViewControllerTests.swift in Sources */,
 				8BACD21D1DAA8F3600F4612B /* NetworkStatusTests.swift in Sources */,
+				09C451E21DABFD2A00E6EAAE /* ListViewControllerTests.swift in Sources */,
 				8B8D575D1DA6082700904C96 /* PhotosTests.swift in Sources */,
 				8B8D57611DA68B0200904C96 /* PhotosViewModelTests.swift in Sources */,
 				8BACD19A1DA7751800F4612B /* UIImageAverageColorTests.swift in Sources */,

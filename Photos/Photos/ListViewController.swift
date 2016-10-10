@@ -14,9 +14,10 @@ import Foundation
 import ObjectMapper
 import BusyNavigationBar
 
-class ListViewController: UIViewController, Alerts {
-    
+class ListViewController: UIViewController, Alerts, SegueHandlerType, CheckDependencies {
+    static let identifier = "ListViewController"
     // MARK: Variables and properties
+    typealias T = PhotosViewModel
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var refreshData: UIBarButtonItem!
@@ -24,7 +25,12 @@ class ListViewController: UIViewController, Alerts {
     private var disposeBag = DisposeBag()
     private var api = PhotoApi()
     private var viewModelManager = ViewModelManager()
-    private var photoViewModels = [PhotosViewModel]()
+    var photoViewModels = [PhotosViewModel?]()
+    private var selectedModel:PhotosViewModel?
+    
+    enum SegueIdentifier: String {
+        case DetailViewController
+    }
     
     // MARK: ViewController lifecicle
     
@@ -42,10 +48,29 @@ class ListViewController: UIViewController, Alerts {
             .addDisposableTo(disposeBag)
         
         tableView.rx_itemSelected
-            .subscribeNext { [unowned self] indexPath in
-                self.presentDetails(indexPath)
+            .observeOn(MainScheduler.instance)
+            .subscribeNext { [weak self] indexPath in
+                guard let model = self!.photoViewModels[indexPath.row] else {
+                    return
+                }
+                self!.selectedModel = model
+                self!.performSegueWithIdentifier(.DetailViewController, sender: nil)
             }
             .addDisposableTo(disposeBag)
+        
+        
+        tableView
+            .rx_itemDeselected
+            .observeOn(MainScheduler.instance)
+            .subscribeNext { [weak self] indexPath in
+                self?.tableView.cellForRowAtIndexPath(indexPath)?.selected = false
+            }.addDisposableTo(disposeBag)
+        
+        self.updateViewModelObservable()
+    }
+    
+    func assertDependencies<T>(dependencies: T?) {
+        assert(dependencies != nil)
     }
 }
 
@@ -56,10 +81,9 @@ extension ListViewController : NetworkManager {
     func initObservables() {
         
         Reachable.filterInternetIsActive()
-            
             .subscribeNext { (status) in
-                self.updateViewModelObservable()
                 self.stopLoaderNavigation()
+                self.showMessage(Options(message: status.description, type: .done))
             }
             .addDisposableTo(self.disposeBag)
         
@@ -67,7 +91,7 @@ extension ListViewController : NetworkManager {
         Reachable.filterInternetIsOffline()
             .subscribeNext { (status) in
                 self.stopLoaderNavigation()
-                self.showMessage(Options(message: "Falha de internet", type: .error))
+                self.showMessage(Options(message: status.description, type: .error))
             }
             .addDisposableTo(self.disposeBag)
     }
@@ -80,13 +104,17 @@ extension ListViewController : NetworkManager {
         self.viewModelManager.data
             .asDriver()
             .asObservable()
+            .observeOn(MainScheduler.instance)
             .bindTo(self.tableView.rx_itemsWithCellIdentifier(PhotoCell.reuseIdentifier)) { _, photo, cell in
-                let cell:PhotoCell = cell as! PhotoCell
                 let model = PhotosViewModel(photo: photo)
                 self.photoViewModels.append(model)
-                cell.setup(model)
             }
             .addDisposableTo(self.disposeBag)
+        
+        tableView.rx_willDisplayCell.subscribeNext{ (cell, indexPath) in
+            let cell:PhotoCell = cell as! PhotoCell
+            cell.setup(self.photoViewModels[indexPath.row]!)
+            }.addDisposableTo(disposeBag)
     }
     
 }
@@ -96,17 +124,19 @@ extension ListViewController : NetworkManager {
 
 extension ListViewController {
     
-    
-    
-    private func presentDetails(index:NSIndexPath) {
-        let sb = UIStoryboard(name: self.storyboardName(), bundle: NSBundle(identifier: DetailViewController.identifier))
-        let vc = sb.instantiateViewControllerWithIdentifier(DetailViewController.identifier) as! DetailViewController
-        vc.model = photoViewModels[index.row]
-        self.navigationController?.pushViewController(vc, animated: true)
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        switch segueIdentifierForSegue(segue) {
+            
+        case .DetailViewController:
+            let details = segue.destinationViewController as? DetailViewController
+            details!.inject(selectedModel!)
+        }
     }
     
     
-    
 }
+
+
 
 

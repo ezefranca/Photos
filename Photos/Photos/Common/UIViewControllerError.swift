@@ -37,7 +37,7 @@ struct Options {
     let title: String
     var notificationManager = LNRNotificationManager()
     
-    init(message: String, title: String = "Erro!", type: typeAlert) {
+    init(message: String, title: String = "Internet", type: typeAlert) {
         notificationManager.notificationsPosition = LNRNotificationPosition.Top
         notificationManager.notificationsBackgroundColor = type.color
         notificationManager.notificationsTitleTextColor = UIColor.whiteColor()

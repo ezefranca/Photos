@@ -21,16 +21,6 @@ public class PhotoApi {
     final private let URLSession = Foundation.NSURLSession.sharedSession()
     private var disposeBag = DisposeBag()
     
-    private var backgroundScheduler: ImmediateSchedulerType {
-        let operationQueue = NSOperationQueue()
-        operationQueue.maxConcurrentOperationCount = 2
-        return OperationQueueScheduler(operationQueue: operationQueue)
-    }
-    
-    private var mainScheduler: SerialDispatchQueueScheduler {
-        return MainScheduler.instance
-    }
-    
     var request:Request? = nil
     
     

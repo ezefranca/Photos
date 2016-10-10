@@ -12,6 +12,10 @@ import Alamofire
 import ObjectMapper
 @testable import Photos
 
+private enum service {
+    static let baseURL = NSURL(string: "https://jsonplaceholder.typicode.com/photos")
+}
+
 class PhotosApiTests: XCTestCase {
     
     override func setUp() {
@@ -57,7 +61,7 @@ class PhotosApiTests: XCTestCase {
                 }
                 return []
             }
-
+            
             
         }
         
