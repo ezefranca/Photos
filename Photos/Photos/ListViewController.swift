@@ -34,6 +34,10 @@ class ListViewController: UIViewController, Alerts, SegueHandlerType, CheckDepen
     
     // MARK: ViewController lifecicle
     
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.navigationBar.barTintColor = UIColor(netHex:0x9B59B6)
+    }
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()

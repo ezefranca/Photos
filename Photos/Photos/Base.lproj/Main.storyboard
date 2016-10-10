@@ -144,13 +144,13 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ALBUM: 1234568919012390123901" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NXF-PI-8Kv">
                                         <rect key="frame" x="353" y="295" width="227" height="20"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID: 12345678910111221413" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9xh-zB-whf">
                                         <rect key="frame" x="20" y="295" width="178" height="20"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aui quo cumque distinctio aut voluptasqui quo cumque distinctio aut voluptas, quo cumque distinctio aut voluptas " textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f8r-t4-fDB">
@@ -160,25 +160,26 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="2kY-cf-smH">
-                                        <rect key="frame" x="20" y="38" width="560" height="240"/>
+                                        <rect key="frame" x="50" y="16" width="500" height="225"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="240" id="VYW-zh-aO6"/>
+                                            <constraint firstAttribute="height" constant="225" id="VYW-zh-aO6"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="f8r-t4-fDB" secondAttribute="bottom" constant="123" id="1qm-2s-zXz"/>
-                                    <constraint firstItem="2kY-cf-smH" firstAttribute="leading" secondItem="279-4D-Ced" secondAttribute="leading" constant="20" id="3VF-Ih-JAO"/>
-                                    <constraint firstItem="2kY-cf-smH" firstAttribute="top" secondItem="279-4D-Ced" secondAttribute="top" constant="38" id="9EG-Il-mlO"/>
-                                    <constraint firstAttribute="trailing" secondItem="2kY-cf-smH" secondAttribute="trailing" constant="20" id="Fkk-ot-UKC"/>
+                                    <constraint firstItem="2kY-cf-smH" firstAttribute="leading" secondItem="279-4D-Ced" secondAttribute="leading" constant="50" id="3VF-Ih-JAO"/>
+                                    <constraint firstItem="2kY-cf-smH" firstAttribute="top" secondItem="279-4D-Ced" secondAttribute="top" constant="16" id="9EG-Il-mlO"/>
+                                    <constraint firstAttribute="trailing" secondItem="2kY-cf-smH" secondAttribute="trailing" constant="50" id="Fkk-ot-UKC"/>
                                     <constraint firstItem="f8r-t4-fDB" firstAttribute="top" secondItem="9xh-zB-whf" secondAttribute="bottom" constant="8" id="Kdw-oj-5fh"/>
                                     <constraint firstItem="9xh-zB-whf" firstAttribute="leading" secondItem="279-4D-Ced" secondAttribute="leading" constant="20" id="Kpc-8b-M84"/>
                                     <constraint firstItem="9xh-zB-whf" firstAttribute="centerY" secondItem="NXF-PI-8Kv" secondAttribute="centerY" id="SBS-w1-aBw"/>
-                                    <constraint firstItem="NXF-PI-8Kv" firstAttribute="top" secondItem="2kY-cf-smH" secondAttribute="bottom" constant="17" id="Z0t-gJ-yoX"/>
+                                    <constraint firstItem="NXF-PI-8Kv" firstAttribute="top" secondItem="2kY-cf-smH" secondAttribute="bottom" constant="54" id="Z0t-gJ-yoX"/>
+                                    <constraint firstItem="2kY-cf-smH" firstAttribute="centerX" secondItem="279-4D-Ced" secondAttribute="centerX" id="eR8-8f-T3h"/>
                                     <constraint firstAttribute="trailing" secondItem="f8r-t4-fDB" secondAttribute="trailing" constant="20" id="eow-Gd-LxU"/>
                                     <constraint firstItem="f8r-t4-fDB" firstAttribute="leading" secondItem="279-4D-Ced" secondAttribute="leading" constant="20" id="mPh-B1-XuS"/>
-                                    <constraint firstItem="9xh-zB-whf" firstAttribute="top" secondItem="2kY-cf-smH" secondAttribute="bottom" constant="17" id="trX-zY-DYy"/>
+                                    <constraint firstItem="9xh-zB-whf" firstAttribute="top" secondItem="2kY-cf-smH" secondAttribute="bottom" constant="54" id="trX-zY-DYy"/>
                                     <constraint firstAttribute="trailing" secondItem="NXF-PI-8Kv" secondAttribute="trailing" constant="20" id="vv2-1f-iEp"/>
                                 </constraints>
                             </view>
