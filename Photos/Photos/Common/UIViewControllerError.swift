@@ -11,6 +11,13 @@ import LNRSimpleNotifications
 import BusyNavigationBar
 import RxSwift
 
+extension UIViewController {
+    func storyboardName() -> String {
+        let storyboardName = "Main"
+        return storyboardName
+    }
+}
+
 enum typeAlert {
     case error
     case done

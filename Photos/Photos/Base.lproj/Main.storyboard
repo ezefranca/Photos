@@ -125,6 +125,83 @@
             </objects>
             <point key="canvasLocation" x="719" y="-556"/>
         </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="QI7-8Z-cQK">
+            <objects>
+                <viewController storyboardIdentifier="DetailViewController" id="SFk-e7-DGB" customClass="DetailViewController" customModule="Photos" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8XI-VH-obs"/>
+                        <viewControllerLayoutGuide type="bottom" id="Jd9-I9-rHK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XmN-qZ-L6u">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="279-4D-Ced" customClass="DetailsView" customModule="Photos" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2kY-cf-smH">
+                                        <rect key="frame" x="20" y="0.0" width="560" height="240"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="240" id="VYW-zh-aO6"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ALBUM: 1234568919012390123901" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NXF-PI-8Kv">
+                                        <rect key="frame" x="353" y="258" width="227" height="20"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID: 12345678910111221413" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9xh-zB-whf">
+                                        <rect key="frame" x="20" y="258" width="178" height="20"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aui quo cumque distinctio aut voluptasqui quo cumque distinctio aut voluptas, quo cumque distinctio aut voluptas " textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f8r-t4-fDB">
+                                        <rect key="frame" x="20" y="286" width="560" height="90"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
+                                        <color key="textColor" red="0.60784313729999995" green="0.34901960780000002" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="f8r-t4-fDB" secondAttribute="bottom" constant="160" id="1qm-2s-zXz"/>
+                                    <constraint firstItem="2kY-cf-smH" firstAttribute="leading" secondItem="279-4D-Ced" secondAttribute="leading" constant="20" id="3VF-Ih-JAO"/>
+                                    <constraint firstItem="2kY-cf-smH" firstAttribute="top" secondItem="279-4D-Ced" secondAttribute="top" id="9EG-Il-mlO"/>
+                                    <constraint firstAttribute="trailing" secondItem="2kY-cf-smH" secondAttribute="trailing" constant="20" id="Fkk-ot-UKC"/>
+                                    <constraint firstItem="f8r-t4-fDB" firstAttribute="top" secondItem="9xh-zB-whf" secondAttribute="bottom" constant="8" id="Kdw-oj-5fh"/>
+                                    <constraint firstItem="9xh-zB-whf" firstAttribute="leading" secondItem="279-4D-Ced" secondAttribute="leading" constant="20" id="Kpc-8b-M84"/>
+                                    <constraint firstItem="9xh-zB-whf" firstAttribute="centerY" secondItem="NXF-PI-8Kv" secondAttribute="centerY" id="SBS-w1-aBw"/>
+                                    <constraint firstItem="NXF-PI-8Kv" firstAttribute="top" secondItem="2kY-cf-smH" secondAttribute="bottom" constant="18" id="Z0t-gJ-yoX"/>
+                                    <constraint firstAttribute="trailing" secondItem="f8r-t4-fDB" secondAttribute="trailing" constant="20" id="eow-Gd-LxU"/>
+                                    <constraint firstItem="f8r-t4-fDB" firstAttribute="leading" secondItem="279-4D-Ced" secondAttribute="leading" constant="20" id="mPh-B1-XuS"/>
+                                    <constraint firstItem="9xh-zB-whf" firstAttribute="top" secondItem="2kY-cf-smH" secondAttribute="bottom" constant="18" id="trX-zY-DYy"/>
+                                    <constraint firstAttribute="trailing" secondItem="NXF-PI-8Kv" secondAttribute="trailing" constant="20" id="vv2-1f-iEp"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="279-4D-Ced" secondAttribute="trailing" id="87R-hd-akW"/>
+                            <constraint firstItem="Jd9-I9-rHK" firstAttribute="top" secondItem="279-4D-Ced" secondAttribute="bottom" id="Qgp-V7-COL"/>
+                            <constraint firstItem="279-4D-Ced" firstAttribute="leading" secondItem="XmN-qZ-L6u" secondAttribute="leading" id="bST-OK-h6n"/>
+                            <constraint firstItem="279-4D-Ced" firstAttribute="top" secondItem="8XI-VH-obs" secondAttribute="bottom" id="dT8-5j-K7S"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="sMB-pZ-qrj"/>
+                    <connections>
+                        <outlet property="albumID" destination="NXF-PI-8Kv" id="bSV-nz-DFb"/>
+                        <outlet property="imageDetails" destination="2kY-cf-smH" id="bqK-SG-UeJ"/>
+                        <outlet property="imageID" destination="9xh-zB-whf" id="4Tq-mO-3JP"/>
+                        <outlet property="imageTitle" destination="f8r-t4-fDB" id="IkX-7x-yYQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SUk-9f-93a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2264" y="-603"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="2oq-EE-Gj8">
             <objects>
@@ -143,6 +220,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zeb-Fv-hun" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-36" y="-556"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="148-yI-BYj">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Rok-D5-igq" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="EO0-Fo-xOB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.60784313729999995" green="0.34901960780000002" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="SFk-e7-DGB" kind="relationship" relationship="rootViewController" id="Jit-Gf-VP8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AK9-BM-Doh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1452" y="-603"/>
         </scene>
     </scenes>
     <resources>

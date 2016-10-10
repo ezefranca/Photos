@@ -11,24 +11,23 @@ import RxSwift
 import RxCocoa
 import ObjectMapper
 
-enum service {
+private enum service {
     static let baseURL = NSURL(string: "https://jsonplaceholder.typicode.com/photos")
 }
 
 public class PhotoApi {
     
-    var photoViewModels = [PhotosViewModel]()
+    final private var photoViewModels = [PhotosViewModel]()
+    final private let URLSession = Foundation.NSURLSession.sharedSession()
+    private var disposeBag = DisposeBag()
     
-    let URLSession = Foundation.NSURLSession.sharedSession()
-    var disposeBag = DisposeBag()
-    
-    public var backgroundScheduler: ImmediateSchedulerType {
+    private var backgroundScheduler: ImmediateSchedulerType {
         let operationQueue = NSOperationQueue()
         operationQueue.maxConcurrentOperationCount = 2
         return OperationQueueScheduler(operationQueue: operationQueue)
     }
     
-    public var mainScheduler: SerialDispatchQueueScheduler {
+    private var mainScheduler: SerialDispatchQueueScheduler {
         return MainScheduler.instance
     }
     
@@ -48,7 +47,7 @@ public class PhotoApi {
                     }
                 });
             return AnonymousDisposable {
-                self.request!.cancel()
+                self.cancel()
             }
         })
         
@@ -71,7 +70,7 @@ public class PhotoApi {
         return []
     }
     
-    func getViewModels() -> Observable<[PhotosViewModel]> {
+    private func getViewModels() -> Observable<[PhotosViewModel]> {
         
         print("comecando download")
         return Observable.create({ (observer) -> Disposable in

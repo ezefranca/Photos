@@ -57,7 +57,7 @@ class PhotosApiTests: XCTestCase {
                 }
                 return []
             }
-            
+
             
         }
         

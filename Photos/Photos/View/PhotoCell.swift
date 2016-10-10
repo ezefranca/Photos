@@ -10,26 +10,24 @@ import UIKit
 import UIImageColors
 import PINRemoteImage
 import Font_Awesome_Swift
+import RxSwift
+import RxCocoa
 
 class PhotoCell: UITableViewCell {
-    
     static let reuseIdentifier: String = "photocell"
     
-    var viewModel: PhotosViewModel!{
+    private var viewModel: PhotosViewModel!{
         
         didSet{
             
-            self.title.text = viewModel.title
-            self.albumid.setFAText(prefixText: "", icon: FAType.FAPictureO, postfixText: String(viewModel.albumId!), size: 12.0, iconSize: 12.0)
-            self.id.setFAText(prefixText: "", icon: FAType.FAFileO, postfixText: String(viewModel.internalIdentifier!.advancedBy(4)), size: 12.0, iconSize: 12.0)
-            self.imageCell!.pin_updateWithProgress = true
-            self.imageCell.pin_setImageFromURL(NSURL(string: viewModel.thumbnailUrl!), placeholderImage: UIImage(named: "placeholder")) { (result) in
+            title.text = viewModel.title
+            albumid.setFAText(prefixText: "", icon: FAType.FAPictureO, postfixText: String(viewModel.albumId!), size: 12.0, iconSize: 12.0)
+            id.setFAText(prefixText: "", icon: FAType.FAFileO, postfixText: String(viewModel.internalIdentifier!.advancedBy(4)), size: 12.0, iconSize: 12.0)
+            imageCell!.pin_updateWithProgress = true
+            imageCell.pin_setImageFromURL(NSURL(string: viewModel.thumbnailUrl!), placeholderImage: UIImage(named: "placeholder")) { (result) in
                 
                 self.imageCell!.image!.getColors { colors in
-                    
-                    //self.backgroundColor = colors.backgroundColor
-                    //      self.line.image = UIImage.imageWithColor(colors.backgroundColor)
-                    
+                    self.colorDominant = colors.backgroundColor
                 }
                 
             }
@@ -37,11 +35,12 @@ class PhotoCell: UITableViewCell {
     }
     
     
-    @IBOutlet var imageCell: UIImageView!
-    @IBOutlet var title: UILabel!
-    @IBOutlet var id: UILabel!
-    @IBOutlet var albumid: UILabel!
-    @IBOutlet var line: UIImageView!
+    @IBOutlet private var imageCell: UIImageView!
+    @IBOutlet private var title: UILabel!
+    @IBOutlet private var id: UILabel!
+    @IBOutlet private var albumid: UILabel!
+    @IBOutlet private var line: UIImageView!
+    private var colorDominant : UIColor?
     
     func setup(viewModel: PhotosViewModel){
         self.viewModel = viewModel

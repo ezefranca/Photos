@@ -41,7 +41,7 @@ struct PhotosViewModel {
 }
 
 
-struct ViewModel {
+struct ViewModelManager  {
     
     var manager:PhotoApi = PhotoApi()
     let load = Variable<Bool>(false)
@@ -60,4 +60,5 @@ struct ViewModel {
     mutating func getPhotos() -> Observable<[Photos]> {
         return (manager.download())
     }
+    //load: Verdadeiro ou Falso para novo download
 }
