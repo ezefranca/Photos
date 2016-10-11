@@ -4,8 +4,8 @@ rvm:
   - 2.2.5
 
 install:
-  
+
 script:
-  - xcodebuild -workspace 'Photos.xcworkspace' -scheme 'Photos' -sdk iphonesimulator CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO test | xcpretty -c
+  - xcodebuild -scheme Photos -workspace Photos.xcworkspace -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6S,OS=9.1' build test
 after_success:
   - bash <(curl -s https://codecov.io/bash)
