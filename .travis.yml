@@ -4,9 +4,7 @@ rvm:
   - 2.2.5
 
 install:
-  gem install cocoapods
-  pod repo update
-  pod install
+  gem install cocoapods && pod repo update && pod install
 
 script:
   - xcodebuild -scheme Photos -workspace Photos.xcworkspace -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6S,OS=9.1' build test
